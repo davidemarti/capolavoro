@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Table</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        
+        body {
+            font-family: 'Fredoka One', cursive;
+            font-size: 16px;
+        }
+
+        .titolo {
+            color: #854442;
+            font-size: 40px;
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+        }
+
+        .bg-light {
+            background-color: #fff4e6;
+        }
+
+        .bg-primary {
+            background-color: #854442;
+        }
+
+        .bg-primaryy {
+            background-color: #854442;
+        }
+
+        .bg-primary.text-white {
+            color: #fff;
+        }
+
+        .table th,
+        .table td {
+            border-color: #545454;
+        }
+
+        .btn-primary {
+            background-color: #854442;
+            border-color: #854442;
+        }
+
+        .btn-primary:hover {
+            background-color: #4b3832;
+            border-color: #4b3832;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" class="form-control" id="searchInput" placeholder="Search by username"
+                    aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </form>
+    </nav>
+
+    <h1 class="text-center titolo">Math Mirror Table</h1>
+    <table class="table table-bordered table-hover" id="dataTable">
+        <thead>
+            <tr class="text-white bg-primaryy">
+                <th>Name</th>
+                <th>Score</th>
+                <th>Max Streak</th>
+                <th>Time</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= data[i].name %>
+                    </td>
+                    <td>
+                        <%= data[i].score %>
+                    </td>
+                    <td>
+                        <%= data[i].maxStreak %>
+                    </td>
+                    <td>
+                        <%= data[i].time %>s
+                    </td>
+                    <td>
+                        <%= data[i].date %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+    <button onclick="redirectToGameHome()" class="btn btn-primary">Go to Home</button>
+
+    </div>
+
+    <script>
+        function redirectToGameHome() {
+            window.location.href = '/home';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const dataTable = document.getElementById('dataTable');
+            const searchInput = document.getElementById('searchInput');
+            const sortButton = document.getElementById('sortButton');
+
+            // Funzione per ordinare la tabella in base allo score
+            function sortTableByScore() {
+                const rows = Array.from(dataTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr'));
+                rows.sort((a, b) => {
+                    const scoreA = parseInt(a.getElementsByTagName('td')[1].innerText);
+                    const scoreB = parseInt(b.getElementsByTagName('td')[1].innerText);
+                    return scoreB - scoreA;
+                });
+
+                // Rimuovi le righe dalla tabella
+                while (dataTable.rows.length > 1) {
+                    dataTable.deleteRow(1);
+                }
+
+                // Aggiungi le righe ordinate alla tabella
+                rows.forEach(row => {
+                    dataTable.getElementsByTagName('tbody')[0].appendChild(row);
+                });
+            }
+
+            // Ordina la tabella per punteggio all'avvio
+            sortTableByScore();
+
+            // Aggiungi un listener per l'input di ricerca
+            searchInput.addEventListener('input', function () {
+                const searchString = searchInput.value.toLowerCase();
+                const rows = dataTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+                for (let i = 0; i < rows.length; i++) {
+                    const username = rows[i].getElementsByTagName('td')[0].innerText.toLowerCase();
+                    if (username.includes(searchString)) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            });
+
+            // Aggiungi un listener per il pulsante di ordinamento
+            sortButton.addEventListener('click', sortTableByScore);
+        });
+    </script>
+</body>
+
+</html>

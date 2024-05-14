@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="hscript.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Mirror</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="hstyle.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="version float-left">Version 1.0 |</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="home" id="home">
+                    <p class="titolo">Math Mirror</p>
+                    <form id="loginForm">
+                        <label for="username" class="username">Username:</label>
+                        <input type="text" id="username" name="username" class="form-control"
+                            placeholder="Enter your username" required>
+                        <br>
+                        <label for="password" class="username">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="*******" required>
+                        <br>
+                        <button type="button" class="btn btn-secondary btn-block accedi" id="loginButton"
+                            onclick="accedi()">Log-in</button>
+                        <button type="button" class="btn btn-secondary btn-block registrati" id="registerButton"
+                            onclick="registrati()">Sign-up</button><br>
+                    </form>
+                    <p class="username" id="userDisplay"></p>
+                    <button class="btn btn-block START" id="START" onclick="Start()">START</button>
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-block classifica" id="registerButton"
+                    onclick="window.location.href = '../table'">Scoreboard</button><br>
+                    <button type="button" class="btn float-right" id="infoPopover" data-toggle="popover"
+                        title="Rules for playing"
+                        data-content="Time: 15s.&#10;Choose the correct answer from 4 choices.&#10;Selecting the correct answer will add 2 seconds to the timer, otherwise remove one second.&#10;Each correct answer is 100 points to the score.&#10;After 5 correct answers in a row the following answers will add 50 more points.">INFO</button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            // Attiva il popover quando si fa clic sul pulsante INFO
+            $('#infoPopover').popover();
+        });
+    </script>
+</body>
+
+</html>

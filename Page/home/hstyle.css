@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body{
+  background-color: #321b1a;
+}
+
+.titolo {
+  color: #fff4e6;
+  font-size: 40px;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+}
+
+.username {
+  color: #fff4e6;
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+}
+
+
+.START{
+  background-color: #854442;
+  color:#fff4e6;
+  font-family: 'Fredoka One', cursive;
+  border: solid #4b3832;
+  border-radius: 25px;
+  height: 100px;
+  font-size: 40px;
+}
+
+.registrati{
+  background-color: #545454;
+  color:#fff4e6;
+  font-family: 'Fredoka One', cursive;
+  border: solid #4b3832;
+  border-radius: 25px;
+}
+
+.classifica{
+  background-color: #854442;
+  color:#fff4e6;
+  font-family: 'Fredoka One', cursive;
+  border: solid #4b3832;
+  border-radius: 25px;
+}
+
+.accedi{
+  background-color: #a2a2a2;
+  color:#fff4e6;
+  font-family: 'Fredoka One', cursive;
+  border: solid #4b3832;
+  border-radius: 25px;
+}
+
+#infoPopover{
+  background-color: #854442;
+  font-family: 'Fredoka One', cursive;
+  border: solid #4b3832;
+  color:#fff4e6;
+}
+
+
+
+/*
+*{
+  background-color: #321b1a;
+}
+
+.nome{
+  height: 150px;
+  width: 600px;
+  background-color: #854442;
+  color:#fff4e6;
+  border-radius: 25px;
+}
+
+.nickname{
+  background-color: transparent;
+  border: transparent;
+  text-align: center;
+  color:#fff4e6;
+  font-size: 60px;
+  font-family: 'Fredoka One', cursive;
+  height: 130px;
+  width: 580px;
+  border-radius: 25px;
+}
+
+.START{
+  background-color: #854442;
+  color:#fff4e6;
+  font-size: 60px;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+  height: 100px;
+  width: 375px;
+  border: solid #4b3832;
+  border-radius: 25px;
+  transition: 1s;
+}
+
+.START:hover{
+   background-color: #df8c8b;
+  color: white;
+}
+
+
+.titolo{
+    color:#fff4e6;
+  font-size: 130px;
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+  transition: 10s;
+}
+
+.tooltip{
+  color:#fff4e6;
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  text-align: center;
+  height: 120px;
+  width: 120px;
+  border-radius: 120px;
+  background-color: #854442;
+  border: solid #4b3832;
+}
+
+.messaggio{
+  visibility: hidden;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 10px;
+  width: 300px;
+  height: 490px;
+  background-color: #fff4e6;;
+  color: black;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px 15px rgb(0,0,0);
+}
+
+.tooltip:hover .messaggio {
+  visibility: visible;
+}
+
+.version{
+  color: #4b3832;
+  font-family: 'Fredoka One', cursive;
+}
+*/
