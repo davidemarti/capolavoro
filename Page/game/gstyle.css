@@ -123,6 +123,7 @@
             text-align: center;
         }
 
+        .username 
         .torna {
             font-size: 20px;
         }
@@ -130,8 +131,10 @@
         .timer {
             font-size: 15px;
         }
-
-        .score,
+        .score {
+            font-size: 12px;
+        }
+        
         .streak {
             font-size: 12px;
         }
