@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Table</title>
@@ -69,38 +70,40 @@
     </nav>
 
     <h1 class="text-center titolo">Math Mirror Table</h1>
-    <table class="table table-bordered table-hover" id="dataTable">
-        <thead>
-            <tr class="text-white bg-primaryy">
-                <th>Name</th>
-                <th>Score</th>
-                <th>Max Streak</th>
-                <th>Time</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(var i=0; i < data.length; i++) { %>
-                <tr>
-                    <td>
-                        <%= data[i].name %>
-                    </td>
-                    <td>
-                        <%= data[i].score %>
-                    </td>
-                    <td>
-                        <%= data[i].maxStreak %>
-                    </td>
-                    <td>
-                        <%= data[i].time %>s
-                    </td>
-                    <td>
-                        <%= data[i].date %>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="dataTable">
+            <thead>
+                <tr class="text-white bg-primaryy">
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Max Streak</th>
+                    <th>Time</th>
+                    <th>Date</th>
                 </tr>
-                <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= data[i].name %>
+                        </td>
+                        <td>
+                            <%= data[i].score %>
+                        </td>
+                        <td>
+                            <%= data[i].maxStreak %>
+                        </td>
+                        <td>
+                            <%= data[i].time %>s
+                        </td>
+                        <td>
+                            <%= data[i].date %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
 
     <button onclick="redirectToGameHome()" class="btn btn-primary">Go to Home</button>
 
