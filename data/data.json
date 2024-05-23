@@ -1,18 +1,1 @@
-[
-    {
-        "name": "davide",
-        "score": 12725,
-        "maxStreak": 38,
-        "time": 91,
-        "date": "23/05/2024 alle 10:50",
-        "type": "NORMAL"
-    },
-    {
-        "name": "davide",
-        "score": 800,
-        "maxStreak": 1,
-        "time": 40,
-        "date": "23/05/2024 alle 10:54",
-        "type": "HARDCORE"
-    }
-]
+[{"name":"davide","score":12725,"maxStreak":38,"time":91,"date":"23/05/2024 alle 10:50","type":"NORMAL"},{"name":"davide","score":1100,"maxStreak":4,"time":47,"date":"23/05/2024 alle 11:10","type":"HARDCORE"}]
