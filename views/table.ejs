@@ -9,7 +9,7 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-        
+
         body {
             font-family: 'Fredoka One', cursive;
             font-size: 16px;
@@ -66,6 +66,14 @@
                 <input type="text" class="form-control" id="searchInput" placeholder="Search by username"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
+            <div class="form-check form-check-inline ml-3">
+                <input class="form-check-input" type="checkbox" id="hardcoreCheckbox" value="HARDCORE">
+                <label class="form-check-label" for="hardcoreCheckbox">HARDCORE</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="normalCheckbox" value="NORMAL">
+                <label class="form-check-label" for="normalCheckbox">NORMAL</label>
+            </div>
         </form>
     </nav>
 
@@ -79,6 +87,7 @@
                     <th>Max Streak</th>
                     <th>Time</th>
                     <th>Date</th>
+                    <th>Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,6 +108,9 @@
                         <td>
                             <%= data[i].date %>
                         </td>
+                        <td>
+                            <%= data[i].type %>
+                        </td>
                     </tr>
                     <% } %>
             </tbody>
@@ -117,7 +129,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const dataTable = document.getElementById('dataTable');
             const searchInput = document.getElementById('searchInput');
-            const sortButton = document.getElementById('sortButton');
+            const hardcoreCheckbox = document.getElementById('hardcoreCheckbox');
+            const normalCheckbox = document.getElementById('normalCheckbox');
 
             // Funzione per ordinare la tabella in base allo score
             function sortTableByScore() {
@@ -139,26 +152,38 @@
                 });
             }
 
-            // Ordina la tabella per punteggio all'avvio
-            sortTableByScore();
-
-            // Aggiungi un listener per l'input di ricerca
-            searchInput.addEventListener('input', function () {
+            // Funzione per filtrare la tabella
+            function filterTable() {
                 const searchString = searchInput.value.toLowerCase();
+                const showHardcore = hardcoreCheckbox.checked;
+                const showNormal = normalCheckbox.checked;
+
                 const rows = dataTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
                 for (let i = 0; i < rows.length; i++) {
                     const username = rows[i].getElementsByTagName('td')[0].innerText.toLowerCase();
-                    if (username.includes(searchString)) {
+                    const type = rows[i].getElementsByTagName('td')[5].innerText;
+
+                    const matchesSearch = username.includes(searchString);
+                    const matchesType = (showHardcore && type === 'HARDCORE') || (showNormal && type === 'NORMAL') || (!showHardcore && !showNormal);
+
+                    if (matchesSearch && matchesType) {
                         rows[i].style.display = '';
                     } else {
                         rows[i].style.display = 'none';
                     }
                 }
-            });
+            }
 
-            // Aggiungi un listener per il pulsante di ordinamento
-            sortButton.addEventListener('click', sortTableByScore);
+            // Ordina la tabella per punteggio all'avvio
+            sortTableByScore();
+
+            // Aggiungi un listener per l'input di ricerca
+            searchInput.addEventListener('input', filterTable);
+
+            // Aggiungi un listener per le checkbox
+            hardcoreCheckbox.addEventListener('change', filterTable);
+            normalCheckbox.addEventListener('change', filterTable);
         });
     </script>
 </body>

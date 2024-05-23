@@ -1,0 +1,154 @@
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+    body {
+        background-color: #321b1a;
+    }
+
+    .titolo {
+        color: #fff4e6;
+        font-size: 40px;
+        font-family: 'Fredoka One', cursive;
+        text-align: center;
+    }
+
+    .username {
+        color: #fff4e6;
+        font-size: 60px;
+        font-family: 'Fredoka One', cursive;
+        text-align: center;
+    }
+
+    #loginButton {
+        font-size: 30px;
+        background-color: #df8c8b;
+        color: #fff4e6;
+        font-family: 'Fredoka One', cursive;
+        border: solid #4b3832;
+        border-radius: 25px;
+    }
+
+    #registerButton {
+        font-size: 30px;
+        background-color: #df8c8b;
+        color: #fff4e6;
+        font-family: 'Fredoka One', cursive;
+        border: solid #4b3832;
+        border-radius: 25px;
+    }
+
+    .torna {
+        color: #fff4e6;
+        font-size: 30px;
+        font-family: 'Fredoka One', cursive;
+        text-align: center;
+    }
+
+    .risposta {
+        background-color: #854442;
+        color: #fff4e6;
+        font-size: 50px;
+        font-family: 'Fredoka One', cursive;
+        text-align: center;
+        border: solid #4b3832;
+        border-radius: 25px;
+        height: 100px;
+        transition: 1s;
+        visibility: hidden;
+    }
+
+    .risposta:hover {
+        background-color: #df8c8b;
+        color: white;
+    }
+
+    .punti {
+        font-size: 35px;
+        font-family: 'Fredoka One', cursive;
+        color: #854442;
+    }
+
+    .score {
+        color: #854442;
+        font-size: 90px;
+        font-family: 'Fredoka One', cursive;
+        transition: 10s;
+    }
+
+    .streak {
+        color: #854442;
+        font-size: 35px;
+        font-family: 'Fredoka One', cursive;
+    }
+
+    .timer {
+        font-size: 35px;
+        font-family: 'Fredoka One', cursive;
+        color: #854442;
+    }
+
+    .question {
+        font-size: 70px;
+        font-family: 'Fredoka One', cursive;
+        color: #fff4e6;
+        text-align: center;
+    }
+
+    #score {
+        font-size: 40px;
+        font-family: 'Fredoka One', cursive;
+        color: #df8c8b;
+        text-align: center;
+        visibility: hidden;
+        background-color: #321b1a;
+    }
+
+    #tasti {
+        visibility: hidden;
+    }
+
+    .container {
+        margin-top: -100px;
+    }
+
+    @media (max-width: 768px) {
+        .risposta {
+            font-size: 40px;
+            height: 80px;
+        }
+
+        .titolo {
+            color: #fff4e6;
+            font-size: 30px;
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+        }
+
+        .username 
+        .torna {
+            font-size: 20px;
+        }
+
+        .timer {
+            font-size: 15px;
+        }
+        .score {
+            font-size: 12px;
+        }
+        
+        .streak {
+            font-size: 12px;
+        }
+
+        .punti {
+            font-size: 15px;
+        }
+
+        .question {
+            font-size: 40px;
+        }
+
+        .container {
+            margin-top: -100px;
+            padding: 15px;
+        }
+    }

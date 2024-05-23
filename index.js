@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'Page/presentation')));
 app.use(express.static(path.join(__dirname, 'Page/home')));
 app.use(express.static(path.join(__dirname, 'Page/game')));
+app.use(express.static(path.join(__dirname, 'Page/game2')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -20,6 +21,10 @@ app.get('/', (req, res) => {
 
 app.get('/game', (req, res) => {
   res.sendFile(path.join(`${__dirname}/Page/game/game.html`));
+});
+
+app.get('/game2', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/Page/game2/game2.html`));
 });
 
 
@@ -45,19 +50,28 @@ app.post('/login', (req, res) => {
   const user = users.find(user => user.username === username && user.password === password);
 
   if (user) {
-    // Trova il massimo punteggio dell'utente
-    const userScore = userData.reduce((maxScore, userData) => {
-      if (userData.name === username && userData.score > maxScore) {
+    // Trova il massimo punteggio dell'utente per il tipo "NORMAL"
+    const normalMaxScore = userData.reduce((maxScore, userData) => {
+      if (userData.name === username && userData.type === 'NORMAL' && userData.score > maxScore) {
         return userData.score;
       }
       return maxScore;
     }, 0);
 
-    res.status(200).json({ user, maxScore: userScore });
+    // Trova il massimo punteggio dell'utente per il tipo "HARDCORE"
+    const hardcoreMaxScore = userData.reduce((maxScore, userData) => {
+      if (userData.name === username && userData.type === 'HARDCORE' && userData.score > maxScore) {
+        return userData.score;
+      }
+      return maxScore;
+    }, 0);
+
+    res.status(200).json({ user, normalMaxScore, hardcoreMaxScore });
   } else {
     res.status(401).json({ message: 'Credenziali non valide' });
   }
 });
+
 
 // Aggiungi questa route al tuo file server.js
 
@@ -91,11 +105,11 @@ app.post('/scrivitabella', (req, res) => {
   let elemento = req.body.elemento;
   let jsonData = Mialibreria.readFile('./data/data.json');
 
-  // Controlla se esiste già un elemento per lo stesso utente nel file JSON
-  const existingElementIndex = jsonData.findIndex(item => item.name === elemento.name);
+  // Cerca un elemento con lo stesso nome e tipo nel file JSON
+  const existingElementIndex = jsonData.findIndex(item => item.name === elemento.name && item.type === elemento.type);
 
   if (existingElementIndex !== -1) {
-    // Se l'utente è già presente nel file JSON, controlla se lo score appena ottenuto è maggiore di quello attuale
+    // Se esiste un elemento con lo stesso nome e tipo
     if (elemento.score > jsonData[existingElementIndex].score) {
       // Se lo score appena ottenuto è maggiore, sostituisci l'elemento nel file JSON
       jsonData[existingElementIndex] = elemento;
@@ -113,6 +127,7 @@ app.post('/scrivitabella', (req, res) => {
 
   res.sendStatus(200); // Invia una risposta di successo al client
 });
+
 
 
 app.listen(5000, () => {

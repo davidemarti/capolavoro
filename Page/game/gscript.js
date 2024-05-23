@@ -182,7 +182,8 @@ function visible() {
     score: punti,
     maxStreak: maxStreak,
     time: tempotot,
-    date: formattedDateTime
+    date: formattedDateTime,
+    type: 'NORMAL'
   };
 
   fetch('/scrivitabella', {
