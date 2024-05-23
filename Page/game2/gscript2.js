@@ -84,8 +84,8 @@ function casuale() {
 function generateIntegral() {
   let coeff = Math.floor(Math.random() * 10) + 1;
   let power = Math.floor(Math.random() * 5) + 1;
-  let integralTerm = `${coeff}x^${power}`;
-  risposta = `${coeff}/${power + 1}x^${power + 1} + C`;
+  let integralTerm = `${coeff}x<sup>${power}</sup>`;
+  risposta = `${coeff}/(${power + 1}x<sup>${power + 1}</sup>) + C`;
 
   let casellaGiusta = Math.floor(Math.random() * 4) + 1;
   document.getElementById("BOX" + casellaGiusta).innerHTML = risposta;
@@ -97,8 +97,8 @@ function generateIntegral() {
 function generateDerivative() {
   let coeff = Math.floor(Math.random() * 10) + 1;
   let power = Math.floor(Math.random() * 5) + 1;
-  let derivativeTerm = `${coeff}x^${power}`;
-  risposta = power === 1 ? `${coeff}` : `${coeff * power}x^${power - 1}`;
+  let derivativeTerm = `${coeff}x<sup>${power}</sup>`;
+  risposta = power === 1 ? `${coeff}` : `${coeff * power}x<sup>${power - 1}</sup>`;
 
   let casellaGiusta = Math.floor(Math.random() * 4) + 1;
   document.getElementById("BOX" + casellaGiusta).innerHTML = risposta;
@@ -106,6 +106,7 @@ function generateDerivative() {
 
   fillOtherBoxes(casellaGiusta, coeff, power, 'derivative');
 }
+
 
 function fillOtherBoxes(casellaGiusta, coeff, power, type) {
   let boxes = [1, 2, 3, 4].filter(n => n !== casellaGiusta);
@@ -116,9 +117,15 @@ function fillOtherBoxes(casellaGiusta, coeff, power, type) {
       fakeCoeff = Math.random() < 0.5 ? coeff : Math.floor(Math.random() * 10) + 1;
       fakePower = Math.random() < 0.5 ? power : Math.floor(Math.random() * 5) + 1;
       if (type === 'integral') {
-        value = `${fakeCoeff}/${fakePower + 1}x^${fakePower + 1} + C`;
+        value = `${fakeCoeff}/(${fakePower + 1}x<sup>${fakePower + 1}</sup>) + C`;
       } else {
-        value = fakePower === 1 ? `${fakeCoeff}` : `${fakeCoeff * fakePower}x^${fakePower - 1}`;
+        if (fakePower === 1) {
+          value = `${fakeCoeff}`;
+        } else if (fakePower === 2) {
+          value = `${fakeCoeff}x`;
+        } else {
+          value = `${fakeCoeff}x<sup>${fakePower - 1}</sup>`;
+        }
       }
     } while (value === document.getElementById("BOX" + casellaGiusta).innerHTML ||
       value === document.getElementById("BOX" + boxes[0]).innerHTML ||
@@ -127,6 +134,8 @@ function fillOtherBoxes(casellaGiusta, coeff, power, type) {
     document.getElementById("BOX" + box).innerHTML = value;
   });
 }
+
+
 
 function checkAnswer(boxId) {
   let selectedAnswer = document.getElementById(boxId).innerHTML;
