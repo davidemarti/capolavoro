@@ -85,7 +85,10 @@ function generateIntegral() {
   let coeff = Math.floor(Math.random() * 10) + 1;
   let power = Math.floor(Math.random() * 5) + 1;
   let integralTerm = `${coeff}x<sup>${power}</sup>`;
-  risposta = `${coeff}/(${power + 1}x<sup>${power + 1}</sup>) + C`;
+  risposta = `${coeff}x<sup>${power + 1}</sup>/(${power + 1}) + C`;
+  if (coeff % (power + 1) == 0) {
+    risposta = `${coeff / (power + 1)}x<sup>${power + 1}</sup> + C`;
+  }
 
   let casellaGiusta = Math.floor(Math.random() * 4) + 1;
   document.getElementById("BOX" + casellaGiusta).innerHTML = risposta;
@@ -117,7 +120,11 @@ function fillOtherBoxes(casellaGiusta, coeff, power, type) {
       fakeCoeff = Math.random() < 0.5 ? coeff : Math.floor(Math.random() * 10) + 1;
       fakePower = Math.random() < 0.5 ? power : Math.floor(Math.random() * 5) + 1;
       if (type === 'integral') {
-        value = `${fakeCoeff}/(${fakePower + 1}x<sup>${fakePower + 1}</sup>) + C`;
+        if (fakeCoeff % (fakePower + 1) === 0) {
+          value = `${fakeCoeff / (fakePower + 1)}x<sup>${fakePower + 1}</sup> + C`;
+        } else {
+          value = `${fakeCoeff}x<sup>${fakePower + 1}</sup>/(${fakePower + 1}) + C`;
+        }
       } else {
         if (fakePower === 1) {
           value = `${fakeCoeff}`;
